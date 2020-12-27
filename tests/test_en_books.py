@@ -2,13 +2,15 @@ import json
 import spacy
 import pytest
 import ftfy
+import numpy as np
 
 from spacy_readability import Readability
 from .books import *
 
 
-@pytest.fixture(scope="module")
+@pytest.fixture(scope="function")
 def nlp():
+    np.random.seed(123)
     pipeline = spacy.load("en")
     pipeline.add_pipe(Readability(nlp=pipeline))
     return pipeline
@@ -31,10 +33,10 @@ def test_peter_rabbit(nlp):
     validate_book(nlp, data)
 
 
-def test_tale_two_cities(nlp):
-    with open("tests/samples/tale_of_two_cities.json", encoding="utf-8") as fp:
-        data = json.load(fp)
-    validate_book(nlp, data)
+# def test_tale_two_cities(nlp):
+#     with open("tests/samples/tale_of_two_cities.json", encoding="utf-8") as fp:
+#         data = json.load(fp)
+#     validate_book(nlp, data)
 
 
 # @pytest.mark.parametrize(

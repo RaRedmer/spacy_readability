@@ -1,5 +1,6 @@
 import spacy
 import pytest
+import numpy as np
 
 from spacy.tokens import Doc
 from spacy_readability import (
@@ -15,6 +16,7 @@ def nlp():
 
 @pytest.fixture(scope="function")
 def read():
+    np.random.seed(123)
     pipeline = spacy.load("en")
     return Readability(nlp=pipeline)
 
@@ -106,16 +108,4 @@ def test_extensions(nlp, read):
     assert pytest.approx(4.19, rel=1e-2) == doc._.flesch_kincaid_grade_level
     assert pytest.approx(7.22, rel=1e-2) == doc._.coleman_liau_index
     assert pytest.approx(3.92, rel=1e-2) == doc._.automated_readability_index
-    assert 0 == doc._.smog
-
-# @pytest.mark.parametrize("text,expected", [("", 0), ("#", 0)])
-# def test_edge_scenarios(text, expected, nlp, read):
-#     nlp.add_pipe(read, last=True)
-#     doc = nlp(text)
-#     assert doc._.flesch_kincaid_grade_level == expected
-#     assert doc._.flesch_kincaid_reading_ease == expected
-#     assert doc._.coleman_liau_index == expected
-#     assert doc._.automated_readability_index == expected
-#     assert doc._.smog == expected
-#     assert doc._.dale_chall == expected
-#     assert doc._.forcast == expected
+    assert doc._.smog == 0
