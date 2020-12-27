@@ -2,7 +2,7 @@ spacy_readability
  ==================
  
   spaCy v2.0 pipeline component for calculating readability scores of of
- text. Provides scores for Flesh-Kincaid grade level, Flesh-Kincaid
+ text. Provides scores for readability metrics such as Flesh-Kincaid grade level, Flesh-Kincaid
  reading ease, Dale-Chall, and SMOG.
  
   Installation
@@ -41,18 +41,18 @@ spacy_readability
  presentation (such as typographic aspects like font size, line height,
  and line length).
  
-  #### Popular Metrics
+  #### Available Metrics
  
-  -   The Flesch formulas
-     :   -   Flesch-Kincaid Readability Score
-         -   Flesch-Kincaid Reading Ease
- 
-  -   Dale-Chall formula
- -   SMOG
- -   Coleman-Liau Index
- -   Automated Readability Index
- -   FORCAST
- 
+| Metric                           | en | de |
+| -------------------------------- |:--:|---:|
+| Flesch-Kincaid Readability Score | ✅ |    |
+| Flesch-Kincaid Reading Ease      | ✅ | ✅ |
+| SMOG                             | ✅ |    |
+| Dale-Chall                       | ✅ |    |
+| Coleman-Liau Index               | ✅ |    |
+| Automated Readability Index      | ✅ |    |
+| FORCAST                          | ✅ |    |
+
   [For more in depth reading.](https://en.wikipedia.org/wiki/Readability)
 
 Contributing
