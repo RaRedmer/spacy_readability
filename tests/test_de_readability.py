@@ -55,7 +55,7 @@ def test_edge_scenarios_ger(text, expected, nlp_ger, read_ger):
     doc = nlp_ger(text)
     # assert doc._.flesch_kincaid_grade_level == expected
     assert doc._.flesch_kincaid_reading_ease == expected
-    assert doc._.gunning_fog_index == expected
+    # assert doc._.gunning_fog_index == expected
     # assert doc._.coleman_liau_index == expected
     # assert doc._.automated_readability_index == expected
     # assert doc._.smog == expected
