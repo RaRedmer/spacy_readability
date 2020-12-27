@@ -1,6 +1,7 @@
 setup:
 	poetry install
-	poetry run pre-commit install
+	poetry run python -m spacy download en_core_web_sm
+	poetry run python -m spacy download de_core_news_sm
 
 test:
 	poetry run pytest --cov=spacy_readability -q --disable-pytest-warnings tests/
